@@ -8,8 +8,8 @@ function App() {
         <div className="App">
             DEMAT BREIZH
             <hr/>
-            <Button>cliquez</Button>
-            <Button>encore ici</Button>
+            <Button text="text">cliquez<br/>ici</Button>
+            <Button><img src="img/cross.svg" alt="cross"></img>Pas là !</Button>
             <Button>pourquoi pas là ?</Button>
             <Button />
         </div>

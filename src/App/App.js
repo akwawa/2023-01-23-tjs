@@ -8,6 +8,9 @@ function App() {
         <div className="App">
             DEMAT BREIZH
             <hr/>
+            <Button>cliquez</Button>
+            <Button>encore ici</Button>
+            <Button>pourquoi pas là ?</Button>
             <Button />
         </div>
     );

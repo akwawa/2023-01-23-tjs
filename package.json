@@ -21,7 +21,9 @@
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "ui-cmp": "npx generate-react-cli component --type=ui-component"
+        "ui-cmp": "npx generate-react-cli component --type=ui-component",
+        "layout-cmp": "npx generate-react-cli component --type=layout-component",
+        "feature-cmp": "npx generate-react-cli component --type=feature-component"
     },
     "eslintConfig": {
         "extends": [

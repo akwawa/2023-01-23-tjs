@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 import styles from './Button.module.css';
 
@@ -26,17 +26,34 @@ const Button = (props) => {
     return (
         <button
             className={
-                `${styles.Button} ${isClicked ? ' ' + styles.clicked : ''}`
+                `${styles.Button}${isClicked ? ' ' + styles.clicked : ''}`
             }
-            onClick={(arg) => {
-                setIsClicked(true);
-                // setIsClicked({...isClicked,clickedState:true});
-                // console.log(arg);
-                props.onButtonClick();
+
+            style={{backgroundColor:props.bgColor,...props.style}}
+            // style={props.style}
+
+            onClick={
+                (arg) => {
+                    setIsClicked(true);
+                    // setIsClicked({...isClicked,clickedState:true});
+                    // console.log(arg);
+                    props.onButtonClick();
+                }
             }
-            }>{props.children}
+            >{props.children}
         </button>
     );
+};
+
+Button.propTypes={
+    onButtonClick:PropTypes.func.isRequired,
+    children:PropTypes.any.isRequired,
+    style:PropTypes.object,
+    bgColor:PropTypes.string,
+};
+
+Button.defaultProps={
+    onButtonClick:()=>{alert("pas d'action")}
 }
 
 export default Button;

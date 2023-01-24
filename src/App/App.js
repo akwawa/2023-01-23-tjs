@@ -31,10 +31,19 @@ class App extends React.PureComponent {
             <div className="App">
                 DEMAT BREIZH
                 <hr />
-                <Button text="text">cliquez<br />ici</Button>
+                <Button
+                    text="text"
+                    style={{
+                        backgroundColor:"tomato",
+                        color:"black",
+                        fontWeight:"bold"
+                    }}
+                    >
+                        cliquez<br />ici
+                </Button>
                 <Button><img src="img/cross.svg" alt="cross"></img>Pas là !</Button>
                 <Button>pourquoi pas là ?</Button>
-                <Button />
+                <Button children="ok" />
                 <hr />
                 <div>
                     Voici le nombre de clic : {this.state.counter}
@@ -59,6 +68,17 @@ class App extends React.PureComponent {
                 }>Clic - 1</Button>
                 <Button onButtonClick={this.handleButtonClick}
                 >Clic + 1</Button>
+                <Button
+                    onButtonClick={
+                        ()=>this.setState({counter:0})
+                    }
+
+                    style={{
+                        color:"black"
+                    }}
+
+                    bgColor="skyblue"
+                >Clic = 0</Button>
             </div>
         );
     }

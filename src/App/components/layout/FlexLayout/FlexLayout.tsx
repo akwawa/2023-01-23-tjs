@@ -5,22 +5,11 @@ import PropTypes from 'prop-types';
 import styles from './FlexLayout.module.css';
 
 export interface IFlexLayoutProps {
-    style?: {}
+    style?: {},
+    children:Array<string|React.ReactElement>
 }
 
-export interface IFlexLayoutState { }
-
-export const initialState: IFlexLayoutState = {}
-
 const FlexLayout: React.FC<IFlexLayoutProps> = (props) => {
-    const [isClicked, setIsClicked] = useState(false);
-
-    useEffect(() => {
-        // console.log(isClicked);
-        if (isClicked === true) {
-            setTimeout(() => setIsClicked(false), 750);
-        }
-    }, [isClicked]);
 
     return (
         <div
@@ -28,12 +17,13 @@ const FlexLayout: React.FC<IFlexLayoutProps> = (props) => {
             data-testid="FlexLayout"
             style={props.style}
         >
-            FlexLayout
+            {props.children}
         </div>);
 }
 
 FlexLayout.propTypes = {
     style: PropTypes.object,
+    children: PropTypes.array.isRequired,
 }
 FlexLayout.defaultProps = {
 

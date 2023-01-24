@@ -1,1 +1,11 @@
-.FlexLayout {}
+.FlexLayout {
+    display: flex;
+}
+
+.FlexLayout>*:first-child {
+    flex-grow: 1;
+}
+
+.FlexLayout>*:nth-child(2) {
+    padding: 0 15px;
+}

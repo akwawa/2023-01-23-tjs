@@ -7,12 +7,23 @@ class App extends React.PureComponent {
 
     constructor(props) {
         super(props);
-        this.state = { counter: 0 };
+
+        this.handleButtonClick = this.handleButtonClick.bind(this);
+
+        this.state = {
+            counter: 0
+        };
     }
 
     componentDidUpdate() {
         console.log('Après le chargement effectif de l\'état', this.state.counter);
         console.log(arguments);
+    }
+
+    handleButtonClick() {
+        this.setState((prevState) => ({
+            counter: prevState.counter+1,
+        }));
     }
 
     render() {
@@ -46,7 +57,8 @@ class App extends React.PureComponent {
                         // );
                     }
                 }>Clic - 1</Button>
-                <Button>Clic + 1</Button>
+                <Button onButtonClick={this.handleButtonClick}
+                >Clic + 1</Button>
             </div>
         );
     }

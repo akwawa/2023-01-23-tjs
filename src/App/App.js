@@ -23,6 +23,7 @@ class App extends React.PureComponent{
                     () => {
                         this.counter--;
                         console.log(this.counter);
+                        this.forceUpdate(); // <-- pas bien, ne pas faire
                         }
                     }>Clic - 1</Button>
                 <Button>Clic + 1</Button>

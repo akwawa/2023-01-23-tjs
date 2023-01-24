@@ -4,16 +4,16 @@ import Button from './components/ui/Buttonts/Button';
 import './App.css';
 
 interface IAppState {
-    counter:number
+    counter: number
     // constante
-    uneValeur:"hello"|"hello2"
+    uneValeur: "hello" | "hello2"
 }
 
-interface IAppProps {}
+interface IAppProps { }
 
 class App extends React.PureComponent<IAppProps, IAppState> {
 
-    constructor(props:IAppProps) {
+    constructor(props: IAppProps) {
         super(props);
 
         this.handleButtonClick = this.handleButtonClick.bind(this);
@@ -24,7 +24,7 @@ class App extends React.PureComponent<IAppProps, IAppState> {
         };
     }
 
-    componentDidUpdate(oldProps:IAppProps, oldState:IAppState) {
+    componentDidUpdate(oldProps: IAppProps, oldState: IAppState) {
         // console.log('Après le chargement effectif de l\'état', this.state.counter);
         // console.log(arguments);
     }
@@ -88,9 +88,11 @@ class App extends React.PureComponent<IAppProps, IAppState> {
                     }}
 
                     bgColor="skyblue"
-                >Clic = 0</Button>
 
-                <Button children={"23"}></Button>
+                    type="reset"
+                >Reset<br />Clic = 0</Button>
+
+                <Button type="reset" children={"23"}></Button>
             </div>
         );
     }

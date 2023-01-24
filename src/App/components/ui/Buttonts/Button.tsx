@@ -5,10 +5,11 @@ import PropTypes from 'prop-types';
 import styles from './Button.module.css';
 
 interface IButtonProps {
-    onButtonClick:Function
+    onButtonClick?:Function
     bgColor?:string
     style?:{}
     children:string|React.ReactElement|Array<string|React.ReactElement>
+    type?:"submit"|"reset"|"button"
 }
 
 // function Button() {
@@ -16,7 +17,7 @@ interface IButtonProps {
  * simple button
  * @returns react component structure
  */
-const Button = (props:IButtonProps) => {
+const Button:React.FC<IButtonProps> = (props) => {
     // Valeur statique pour fonction
     const [isClicked, setIsClicked] = useState(false);
     // console.log(props);
@@ -31,6 +32,8 @@ const Button = (props:IButtonProps) => {
 
     return (
         <button
+            type={props.type}
+
             className={
                 `${styles.Button}${isClicked ? ' ' + styles.clicked : ''}`
             }
@@ -39,27 +42,31 @@ const Button = (props:IButtonProps) => {
             // style={props.style}
 
             onClick={
-                (arg) => {
+                (arg: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
                     setIsClicked(true);
                     // setIsClicked({...isClicked,clickedState:true});
-                    // console.log(arg);
-                    props.onButtonClick();
+                    if (typeof props.onButtonClick !== "undefined") {
+                        props.onButtonClick();
+                    }
                 }
             }
-        >{props.children}
+        >
+            {props.children}
         </button>
     );
 };
 
 Button.propTypes = {
-    onButtonClick: PropTypes.func.isRequired,
     children: PropTypes.any.isRequired,
+    onButtonClick: PropTypes.func,
     style: PropTypes.object,
     bgColor: PropTypes.string,
+    type: PropTypes.oneOf(['submit', 'reset', 'button']),
 };
 
 Button.defaultProps = {
-    onButtonClick: () => { alert("pas d'action") }
+    onButtonClick: () => { alert("pas d'action"); },
+    type: 'button',
 }
 
 export default Button;

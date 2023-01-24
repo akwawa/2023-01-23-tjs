@@ -3,10 +3,19 @@ import Button from './components/ui/Button/Button';
 
 import './App.css';
 
-class App extends React.PureComponent{
-    counter=0;
+class App extends React.PureComponent {
 
-    render(){
+    constructor(props) {
+        super(props);
+        this.state = { counter: 0 };
+    }
+
+    componentDidUpdate() {
+        console.log('Après le chargement effectif de l\'état', this.state.counter);
+        console.log(arguments);
+    }
+
+    render() {
         return (
             <div className="App">
                 DEMAT BREIZH
@@ -17,15 +26,26 @@ class App extends React.PureComponent{
                 <Button />
                 <hr />
                 <div>
-                    Voici le nombre de clic : {this.counter}
+                    Voici le nombre de clic : {this.state.counter}
                 </div>
                 <Button onButtonClick={
                     () => {
-                        this.counter--;
-                        console.log(this.counter);
-                        this.forceUpdate(); // <-- pas bien, ne pas faire
-                        }
-                    }>Clic - 1</Button>
+                        // Mauvaise pratique
+                        // this.state.counter--;
+
+                        // Bonne pratique
+                        this.setState(
+                            { counter: this.state.counter - 1 },
+                            // ()=>{console.log(this.state.counter);}
+                        );
+                        // this.setState(
+                        //     (state) => {
+                        //         return { counter: state.counter - 1 };
+                        //     },
+                        //     () => { console.log(this.state.counter); }
+                        // );
+                    }
+                }>Clic - 1</Button>
                 <Button>Clic + 1</Button>
             </div>
         );

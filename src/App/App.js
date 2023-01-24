@@ -16,8 +16,8 @@ class App extends React.PureComponent {
     }
 
     componentDidUpdate() {
-        console.log('Après le chargement effectif de l\'état', this.state.counter);
-        console.log(arguments);
+        // console.log('Après le chargement effectif de l\'état', this.state.counter);
+        // console.log(arguments);
     }
 
     handleButtonClick() {

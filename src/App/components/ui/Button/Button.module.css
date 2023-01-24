@@ -17,3 +17,23 @@
 
     display: inline;
 }
+
+/* .Button:hover, .Button:focus { */
+.Button:hover {
+    border:1px double black;
+    background-color: white;
+    color: black;
+    box-shadow: 10px 10px 10px lightgrey;
+}
+
+.Button:active {
+    color:blue;
+    font-weight: bold;
+}
+
+.Button.clicked {
+    border:1px groove black;
+    background-color: white;
+    color: red;
+    box-shadow: 10px 10px 10px lightgrey;
+}

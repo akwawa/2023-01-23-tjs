@@ -1,0 +1,39 @@
+.Button {
+    color: white;
+    background-color: green;
+
+    font-size: medium;
+    padding: 0.5em 10px;
+    margin: 0 10px;
+
+    border: none;
+    border-radius: 7px;
+    box-shadow: 10px 10px 10px aquamarine;
+}
+
+.Button img {
+    max-width: 2em;
+    max-height: 2em;
+
+    display: inline;
+}
+
+/* .Button:hover, .Button:focus { */
+.Button:hover {
+    border:1px double black;
+    background-color: white;
+    color: black;
+    box-shadow: 10px 10px 10px lightgrey;
+}
+
+.Button:active {
+    color:blue;
+    font-weight: bold;
+}
+
+.Button.clicked {
+    border:1px groove black;
+    background-color: white;
+    color: red;
+    box-shadow: 10px 10px 10px lightgrey;
+}

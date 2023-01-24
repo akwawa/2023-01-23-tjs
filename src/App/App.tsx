@@ -1,28 +1,37 @@
 import React from 'react';
-import Button from './components/ui/Button/Button';
+import Button from './components/ui/Buttonts/Button';
 
 import './App.css';
 
-class App extends React.PureComponent {
+interface IAppState {
+    counter:number
+    // constante
+    uneValeur:"hello"|"hello2"
+}
 
-    constructor(props) {
+interface IAppProps {}
+
+class App extends React.PureComponent<IAppProps, IAppState> {
+
+    constructor(props:IAppProps) {
         super(props);
 
         this.handleButtonClick = this.handleButtonClick.bind(this);
 
         this.state = {
-            counter: 0
+            counter: 0,
+            uneValeur: "hello2",
         };
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(oldProps:IAppProps, oldState:IAppState) {
         // console.log('Après le chargement effectif de l\'état', this.state.counter);
         // console.log(arguments);
     }
 
-    handleButtonClick() {
+    handleButtonClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
         this.setState((prevState) => ({
-            counter: prevState.counter+1,
+            counter: prevState.counter + 1,
         }));
     }
 
@@ -31,15 +40,16 @@ class App extends React.PureComponent {
             <div className="App">
                 DEMAT BREIZH
                 <hr />
+                <h1>{process.env.REACT_APP_NOT_SECRET_CODE}</h1>
+                <hr />
                 <Button
-                    text="text"
                     style={{
-                        backgroundColor:"tomato",
-                        color:"black",
-                        fontWeight:"bold"
+                        backgroundColor: "tomato",
+                        color: "black",
+                        fontWeight: "bold"
                     }}
-                    >
-                        cliquez<br />ici
+                >
+                    cliquez<br />ici
                 </Button>
                 <Button><img src="img/cross.svg" alt="cross"></img>Pas là !</Button>
                 <Button>pourquoi pas là ?</Button>
@@ -70,15 +80,17 @@ class App extends React.PureComponent {
                 >Clic + 1</Button>
                 <Button
                     onButtonClick={
-                        ()=>this.setState({counter:0})
+                        () => this.setState({ counter: 0 })
                     }
 
                     style={{
-                        color:"black"
+                        color: "black"
                     }}
 
                     bgColor="skyblue"
                 >Clic = 0</Button>
+
+                <Button children={"23"}></Button>
             </div>
         );
     }

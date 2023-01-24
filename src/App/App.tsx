@@ -6,13 +6,16 @@ import Footer from './components/ui/Footer/Footer';
 import FlexLayout from './components/layout/FlexLayout/FlexLayout';
 import Navbar from './components/ui/Navbar/Navbar';
 
-import MemeSvgViewer from './components/ui/SvgViewer/SvgViewer';
+// import MemeSvgViewer from './components/ui/SvgViewer/SvgViewer';
 import MemeForm from './components/feature/MainForm/MainForm';
+
+import { MemeSVGViewer } from 'orsys-tjs-meme';
+import { DummyMeme } from './interfaces/dummyMeme';
 
 import './App.css';
 
-interface IAppState {}
-interface IAppProps {}
+interface IAppState { }
+interface IAppProps { }
 
 class App extends React.PureComponent<IAppProps, IAppState> {
     constructor(props: IAppProps) {
@@ -27,7 +30,7 @@ class App extends React.PureComponent<IAppProps, IAppState> {
     }
 
     handleButtonClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
-        this.setState((prevState) => ({  }));
+        this.setState((prevState) => ({}));
     }
 
     render() {
@@ -38,7 +41,8 @@ class App extends React.PureComponent<IAppProps, IAppState> {
                 <Navbar />
                 <hr />
                 <FlexLayout>
-                    <MemeSvgViewer />
+                    {/* <MemeSvgViewer /> */}
+                    <MemeSVGViewer meme={DummyMeme} image={undefined} />
                     <MemeForm />
                 </FlexLayout>
                 <hr />

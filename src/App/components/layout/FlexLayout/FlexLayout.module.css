@@ -8,4 +8,5 @@
 
 .FlexLayout>*:nth-child(2) {
     padding: 0 15px;
+    border-left:1px solid black;
 }

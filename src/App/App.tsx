@@ -12,6 +12,8 @@ import MemeForm from './components/feature/MainForm/MainForm';
 import { MemeInterface, MemeSVGViewer, ImageInterface } from 'orsys-tjs-meme';
 import { DummyMeme } from './interfaces/dummyMeme';
 
+import { BASE_MEME_IMG, REST_ADR } from './config/config';
+
 import './App.css';
 
 interface IAppState {
@@ -32,6 +34,14 @@ class App extends React.PureComponent<IAppProps, IAppState> {
         };
     }
 
+    componentDidMount(): void {
+        fetch(`${REST_ADR}/images`)
+        // fetch(`http://localhost:5629/images`)
+        .then(r=>r.json(), r=>[])
+        .then(ar=>this.setState({images:ar}))
+        ;
+    }
+
     render() {
         return (
             <div className="App">
@@ -41,7 +51,11 @@ class App extends React.PureComponent<IAppProps, IAppState> {
                 <hr />
                 <FlexLayout>
                     {/* <MemeSvgViewer /> */}
-                    <MemeSVGViewer meme={this.state.meme} image={undefined} />
+                    <MemeSVGViewer
+                        meme={this.state.meme}
+                        image={this.state.images.find(element => element.id === this.state.meme.imageId)}
+                        basePath="/img/meme/"
+                    />
                     <MemeForm
                         meme={this.state.meme}
                         images={this.state.images}

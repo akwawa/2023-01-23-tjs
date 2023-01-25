@@ -1,0 +1,11 @@
+Ajout de l'extension : redux devTools
+
+Dans "dispatcher" ->
+{
+    type: 'listes/addImage',
+    payload:{id:0,name:"hello"}
+}
+
+
++33.66<a_supp>42
+Puis rajouter :7560

@@ -2,12 +2,16 @@ import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 
 import listeReducer, { addImage } from './listes';
+import currentReducer from './current';
 
 // export const uneValeurASupprimerApres = "";
 
 export const store = configureStore(
     {
-        reducer: combineReducers({listes:listeReducer}),
+        reducer: combineReducers({
+            listes: listeReducer,
+            current: currentReducer
+        }),
         devTools: true,
     }
 );

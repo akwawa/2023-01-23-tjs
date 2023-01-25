@@ -1,9 +1,10 @@
-import React, { memo, useEffect, useState } from "react";
+import React from "react";
 import { MemeInterface, ImageInterface } from "orsys-tjs-meme";
 import Button from "../../ui/Buttonts/Button";
 
 import styles from "./MainForm.module.css";
 import { connect } from "react-redux";
+import { updateCurrent } from "../../../store/current";
 
 //types
 interface IMainFormProps {
@@ -195,14 +196,20 @@ const MainForm: React.FC<IMainFormProps> = (props) => {
     );
 };
 
+// Voir useDispatch plutôt
 function mapDispatchToProps(dispatch: Function) {
-    return {};
+    return {
+        onMemeValueChange: (newMeme:MemeInterface)=> {
+            dispatch(updateCurrent(newMeme));
+        }
+    };
 }
 
 function mapStateToProps(state:any, ownProps:any) {
     return {
         ...ownProps,
-        images:state.listes.images
+        images:state.listes.images,
+        meme:state.current
     };
 }
 

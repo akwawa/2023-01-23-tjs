@@ -15,7 +15,10 @@ const listes = createSlice({
     name: "listes",
     initialState,
     reducers: {
-        addImage:(state:ISliceListe, action:{type:any,payload:ImageInterface})=>{
+        addImage: (
+            state: ISliceListe,
+            action: { type: any, payload: ImageInterface }
+        ) => {
             state.images.push(action.payload);
         }
     }

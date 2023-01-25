@@ -9,3 +9,8 @@ Dans "dispatcher" ->
 
 +33.66<a_supp>42
 Puis rajouter :7560
+
+
+.env :
+REACT_APP_NOT_SECRET_CODE=Header
+RET_ADR="http://localhost:5629/"

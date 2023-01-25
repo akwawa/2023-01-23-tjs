@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 
-import listeReducer, { addImage } from './listes';
+import listeReducer, { addImage, fetchImagesListe } from './listes';
 import currentReducer from './current';
 
 // export const uneValeurASupprimerApres = "";
@@ -15,6 +15,9 @@ export const store = configureStore(
         devTools: true,
     }
 );
+
+store.dispatch(fetchImagesListe());
+
 
 // console.log(store.getState());
 // const tmpAction = addImage({ "id": 2, "url": "think.bmp", "w": 675, "h": 380, "name": "Think" });

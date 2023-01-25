@@ -16,6 +16,7 @@ import { BASE_MEME_IMG, REST_ADR } from './config/config';
 
 import './App.css';
 import { store } from './store/store';
+import Button from './components/ui/Buttonts/Button';
 
 interface IAppState {
     meme: MemeInterface

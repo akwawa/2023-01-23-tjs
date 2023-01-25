@@ -1,5 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { ImageInterface, MemeInterface } from 'orsys-tjs-meme';
+import { REST_ADR } from '../config/config';
 
 export interface ISliceListe {
     memes: Array<MemeInterface>
@@ -11,6 +12,8 @@ const initialState = {
     images: []
 }
 
+type RequestState = 'pending' | 'fulfilled' | 'rejected';
+
 const listes = createSlice({
     name: "listes",
     initialState,
@@ -21,8 +24,27 @@ const listes = createSlice({
         ) => {
             state.images.push(action.payload);
         }
-    }
+    },
+    extraReducers(builder) {
+        builder.addCase(
+            fetchImagesListe.fulfilled, (
+                state: any,
+                action: { type: any, payload: [] }
+            ) => {
+                state.images.push(...action.payload);
+            }
+        )
+    },
 });
+
+export const fetchImagesListe = createAsyncThunk(
+    'listes/fetchImages',
+    async () => {
+        const response = await fetch(`${REST_ADR}/images`);
+        const data = await response.json();
+        return data;
+    }
+);
 
 export const { addImage } = listes.actions;
 

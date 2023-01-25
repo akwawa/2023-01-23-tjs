@@ -3,6 +3,7 @@ import { MemeInterface, ImageInterface } from "orsys-tjs-meme";
 import Button from "../../ui/Buttonts/Button";
 
 import styles from "./MainForm.module.css";
+import { connect } from "react-redux";
 
 //types
 interface IMainFormProps {
@@ -43,11 +44,11 @@ const MainForm: React.FC<IMainFormProps> = (props) => {
                     <option value="-1">Aucune</option>
                     {
                         props.images.map(
-                            (element,i,) => {
+                            (element, i,) => {
                                 // console.log(element);
                                 return (
                                     <option
-                                        key={"f_img"+i}
+                                        key={"f_img" + i}
                                         value={element.id}
                                     >
                                         {element.name}
@@ -194,5 +195,17 @@ const MainForm: React.FC<IMainFormProps> = (props) => {
     );
 };
 
+function mapDispatchToProps(dispatch: Function) {
+    return {};
+}
 
-export default MainForm;
+function mapStateToProps(state:any, ownProps:any) {
+    return {
+        ...ownProps,
+        images:state.listes.images
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainForm);
+
+export const UN_MainForm = MainForm;

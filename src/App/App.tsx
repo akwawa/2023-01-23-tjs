@@ -15,6 +15,7 @@ import { DummyMeme } from './interfaces/dummyMeme';
 import { BASE_MEME_IMG, REST_ADR } from './config/config';
 
 import './App.css';
+import { store } from './store/store';
 
 interface IAppState {
     meme: MemeInterface
@@ -35,11 +36,16 @@ class App extends React.PureComponent<IAppProps, IAppState> {
     }
 
     componentDidMount(): void {
-        fetch(`${REST_ADR}/images`)
-        // fetch(`http://localhost:5629/images`)
-        .then(r=>r.json(), r=>[])
-        .then(ar=>this.setState({images:ar}))
-        ;
+        // console.log(uneValeurASupprimerApres);
+
+        // Pas bien, ne pas faire. passer par des magasins
+        // fetch(`${REST_ADR}/images`)
+        // .then(r=>r.json(), r=>[])
+        // .then(ar=>this.setState({images:ar}))
+        // ;
+
+        // Méthode magasin -> subscribe pas bien
+        // Méthode magasin -> par feature !
     }
 
     render() {

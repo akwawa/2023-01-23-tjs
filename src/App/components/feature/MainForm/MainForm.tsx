@@ -8,9 +8,11 @@ import styles from "./MainForm.module.css";
 interface IMainFormProps {
     onMemeValueChange: Function,
     meme: MemeInterface,
+    images: Array<ImageInterface>
 }
 
 const MainForm: React.FC<IMainFormProps> = (props) => {
+    // console.log(props.images);
     return (
         <div data-testid="MemeForm" className={styles.MainForm}>
             <form>
@@ -29,8 +31,31 @@ const MainForm: React.FC<IMainFormProps> = (props) => {
                 />
                 <hr />
                 <h2>Image</h2>
-                <select>
+                <select
+                    value={props.meme.imageId}
+                    onChange={
+                        (event) => {
+                            // console.log(event.target.value);
+                            props.onMemeValueChange({ ...props.meme, imageId: Number(event.target.value) });
+                        }
+                    }
+                >
                     <option value="-1">Aucune</option>
+                    {
+                        props.images.map(
+                            (element,i,) => {
+                                // console.log(element);
+                                return (
+                                    <option
+                                        key={"f_img"+i}
+                                        value={element.id}
+                                    >
+                                        {element.name}
+                                    </option>
+                                );
+                            }
+                        )
+                    }
                 </select>
                 <hr />
                 <h2>text</h2>
@@ -168,5 +193,6 @@ const MainForm: React.FC<IMainFormProps> = (props) => {
         </div>
     );
 };
+
 
 export default MainForm;

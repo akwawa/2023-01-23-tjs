@@ -2,11 +2,18 @@
   "images": [
     {
       "id": 0,
-      "url": "img1.jpg",
-      "w": 400,
-      "h": 400,
-      "name": "dummy sample"
-    }
+      "url": "think.bmp",
+      "w": 675,
+      "h": 380,
+      "name": "Think"
+    },
+    {
+        "id": 1,
+        "url": "worthless.bmp",
+        "w": 892,
+        "h": 1000,
+        "name": "Worthless"
+      }
   ],
   "memes": [
     {

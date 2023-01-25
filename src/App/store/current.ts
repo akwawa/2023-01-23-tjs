@@ -14,12 +14,14 @@ const current = createSlice({
             state: MemeInterface,
             action: { type: string, payload: MemeInterface }
         ) => {
-            state=action.payload;
+            // state=action.payload;
+            Object.assign(state, action.payload);
         },
         clearCurrent: (
             state: MemeInterface
         ) => {
-            state={...DummyMeme};
+            // state={...DummyMeme};
+            Object.assign(state, DummyMeme);
         }
     }
 });
